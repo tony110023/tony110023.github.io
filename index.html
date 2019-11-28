@@ -1,0 +1,129 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+	<title>BMI cal</title>
+
+<link rel="stylesheet" href="../library/css/bootstrap.css">
+
+<script src="../library/js/jquery-2.2.4.js"></script>
+<script src="../library/js/bootstrap.js"></script>
+
+
+<style>
+.container-fluid{
+  padding-left: 0px;
+  padding-right: 0px;
+
+}
+
+.box{
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+
+}
+
+.btn-box{
+  padding-left: 0px;
+  padding-right: 40px;
+  padding-top: 52.5px;
+
+}
+
+</style>
+
+<script>
+$(function(){
+  $("#cal").click(function(){
+    var height=$("#height").val();
+    var weight=$("#weight").val();
+
+
+    if( height == "" ){
+      alert("請輸入身高");
+    } else if(height > 5){
+      alert("身高的單位為公尺(m)");
+    }
+    else if ( weight == "" ){
+      alert("請輸入體重");
+    } else{
+      var bmi = weight / (height*height);
+      $("#result").val(formatFloat(bmi,2));
+      $("#height").val("");
+      $("#weight").val("");
+    }
+
+    function formatFloat(num, pos)
+    {
+      var size = Math.pow(10, pos);
+      return Math.round(num * size) / size;
+    }
+
+
+    /*function formatFloat(num, pos)
+    {
+      var size = Math.pow(10, pos);
+      return Math.round(num * size) / size;
+    }
+    alert(formatFloat("1109.1893", 2));*/
+
+    //console.log("height =" );
+    //console.log(height);
+
+
+
+
+
+
+  });
+
+});
+</script>
+
+
+</head>
+
+
+
+<body>
+
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">BMI CAL</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+  </nav>
+
+<DIV class="Row">
+  <DIV class="col-md-4 box">
+    <div class="form-group">
+      <label for="height">身高(m)</label>
+      <input type="number" class="form-control" id="height"  placeholder="輸入身高">
+    </div>
+  </DIV>
+  <DIV class="col-md-4 box">
+    <div class="form-group">
+      <label for="weight">體重(Kg)</label>
+      <input type="number" class="form-control" id="weight" placeholder="輸入體重">
+    </div>
+  </DIV>
+  <div class="col-md-1 btn-box">
+    <div class="form-group">
+      <button type="button" class="btn btn-success" id="cal">計算</button>
+    </div>
+  </div>
+
+  <DIV class="col-md-3 box">
+    <label for="">你的BMI</label>
+    <input type="number" class="form-control" id="result" readonly="true">
+  </DIV>
+</DIV>
+
+</div>
+
+</body>
+
+</html>
